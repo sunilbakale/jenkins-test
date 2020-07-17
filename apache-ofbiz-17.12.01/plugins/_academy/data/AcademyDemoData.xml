@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+        <AcademyExpense expenseTypeId="INTERNAL" description=""/>
+        <AcademyExpense expenseId="1001" expenseTypeId="INTERNAL" title="Expense title sample" date="2020-02-12 14:21:43.096" amount="500" paymentMode="CASH" description="TEST DESC"/>
+        <AcademyExpense expenseId="1002" expenseTypeId="INTERNAL" title="Expense title sample" date="2020-02-12 14:21:43.096" amount="500" paymentMode="CASH" description="TEST DESC"/>
+</entity-engine-xml>

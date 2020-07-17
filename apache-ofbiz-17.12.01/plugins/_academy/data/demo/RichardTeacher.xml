@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<entity-engine-xml>
+
+
+    <Party partyId="richard.teacher" partyTypeId="PERSON" />
+    <PartyRole partyId="richard.teacher" roleTypeId="TEACHER"/>
+    <Person partyId="richard.teacher" firstName="Richard" lastName="Teacher"/>
+    <UserLogin partyId="richard.teacher" userLoginId="richard.teacher@gmail.com" currentPassword="$SHA$/XX$qEp_TAifoA29h06QCposjcf2Gfg" passwordHint="" enabled="Y"/>
+    <!-- password: 123456 -->
+
+    <Party partyId="brandon.student" partyTypeId="PERSON" />
+    <PartyRole partyId="brandon.student" roleTypeId="STUDENT"/>
+    <Person partyId="brandon.student" firstName="Brandon" lastName="Student"/>
+    <PartyRelationship partyIdFrom="richard.teacher" partyIdTo="brandon.student"
+                       partyRelationshipTypeId="STUDENT"
+                       roleTypeIdFrom="TEACHER" roleTypeIdTo="STUDENT"
+                       fromDate="2019-01-01 00:00:00.000"/>
+
+</entity-engine-xml>
+

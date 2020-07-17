@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+
+    <screen name="GeneralDecorator">
+        <section>
+            <actions>
+				<!-- <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderErrorUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ManufacturingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="WorkEffortUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ContentUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                 -->
+				<script location="component://portal/webapp/portal/WEB-INF/actions/PrepareHeaderDetails.groovy"/>
+
+			</actions>
+            <widgets>
+				<section>
+					<widgets>
+
+					<container>
+						<container>
+							<!-- HTML Headers  -->
+							<platform-specific><html><html-template location="component://portal/webapp/portal/pages/common/headerHead.ftl"/></html></platform-specific>
+
+							<platform-specific><html><html-template location="component://portal/webapp/portal/pages/common/sidebar.ftl"/></html></platform-specific>
+
+							<platform-specific><html><html-template location="component://portal/webapp/portal/pages/common/pageHeader.ftl"/></html></platform-specific>
+
+							<!-- body -->
+							<platform-specific><html><html-template location="component://portal/webapp/portal/pages/layouts/GeneralLayout.ftl"/></html>
+							</platform-specific>
+							<!-- decorator-section-include name="body"/ -->
+
+							<platform-specific><html><html-template location="component://portal/webapp/portal/pages/common/pageFooter.ftl"/></html></platform-specific>
+
+							<!-- footer -->
+							<platform-specific><html><html-template location="component://portal/webapp/portal/pages/common/footer.ftl"/></html></platform-specific>
+						</container>
+					</container>
+				</widgets>
+				</section>
+			</widgets>
+        </section>
+    </screen>
+
+	<screen name="PreLoginDecorator">
+		<section>
+			<actions>
+				<!--<script location="component://portal/webapp/portal/WEB-INF/actions/PrepareHeaderDetails.groovy"/>-->
+			</actions>
+			<widgets>
+				<section>
+					<widgets>
+
+						<container>
+							<container>
+								<!-- HTML Headers  -->
+								<platform-specific><html><html-template location="component://portal/webapp/portal/pages/common/headerHead.ftl"/></html></platform-specific>
+
+
+								<!-- body -->
+								<platform-specific><html><html-template location="component://portal/webapp/portal/pages/layouts/GeneralLayout.ftl"/></html>
+								</platform-specific>
+								<!-- decorator-section-include name="body"/ -->
+
+								<platform-specific><html><html-template location="component://portal/webapp/portal/pages/common/pageFooter.ftl"/></html></platform-specific>
+
+								<!-- footer -->
+								<platform-specific><html><html-template location="component://portal/webapp/portal/pages/common/footer.ftl"/></html></platform-specific>
+							</container>
+						</container>
+					</widgets>
+				</section>
+			</widgets>
+		</section>
+	</screen>
+
+
+	<screen name="EmptyDecorator">
+		<section>
+			<actions>
+				<!-- <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderErrorUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ManufacturingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="WorkEffortUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ContentUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                 -->
+				<script location="component://portal/webapp/portal/WEB-INF/actions/PrepareHeaderDetails.groovy"/>
+
+			</actions>
+			<widgets>
+				<section>
+					<widgets>
+
+						<container>
+
+							<!-- body -->
+							<platform-specific><html><html-template location="component://portal/webapp/portal/pages/layouts/GeneralLayout.ftl"/></html>
+							</platform-specific>
+							<!-- decorator-section-include name="body"/ -->
+
+						</container>
+					</widgets>
+				</section>
+			</widgets>
+		</section>
+	</screen>
+</screens>

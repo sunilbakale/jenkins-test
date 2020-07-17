@@ -1,0 +1,421 @@
+
+body {
+    overflow-x: hidden;
+    background-color: white !important;
+    font-family: "Roboto", "Open Sans", "Ariel", "sans-serif" !important;
+    font-size: 0.95rem !important;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+    background-color: #001529 !important;
+}
+
+#sidebar-wrapper a {
+    text-decoration: none;
+    background-color: #001529 !important;
+    color: #aaa !important;
+}
+
+#sidebar-wrapper a:hover {
+    color: #ddd !important;
+}
+
+#sidebar-wrapper .active-item {
+    color: #bbb !important;;
+    background-color: #2A4365 !important;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.8rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .sidebar-heading a {
+    color: #BCBBBB;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
+
+.top-navbar {
+    background-color: white !important;
+}
+
+.page-title {
+    color: #27274F;
+    font-size: 1.2rem;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+    background-color: #F7FAFC !important;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+
+.cthform {
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.cthform-info {
+    padding: 10px;
+}
+
+.cth_page_heading {
+    border-bottom: 1px solid #eee;
+    /*border-radius: 0 0 10px 10px;*/
+    padding: 5px;
+}
+
+.cthpage_asterisk {
+    color: red;
+    font-size: 8px !important;
+    vertical-align: top;
+    padding-top: 5px;
+}
+
+.sidebar-heading a:hover {
+    text-decoration: none;
+}
+
+.cthtable {
+    background-color: white;
+}
+
+.editstudent {
+    background-color: white;
+}
+
+/*DashBoard*/
+@media screen and (max-width: 34em) {
+    .row-offcanvas-left .sidebar-offcanvas {
+        left: -45%;
+    }
+
+    .row-offcanvas-left.active {
+        left: 45%;
+        margin-left: -6px;
+    }
+
+    .sidebar-offcanvas {
+        width: 45%;
+    }
+}
+
+.card {
+    overflow: hidden;
+    border: 0;
+    border-radius: 6px;
+    transition: box-shadow .7s;
+}
+
+.card:hover {
+    box-shadow: 10px 10px 10px grey;
+}
+
+.card-block .rotate {
+    z-index: 8;
+    float: right;
+    height: 100%;
+}
+
+.card-block .rotate i {
+    color: rgba(20, 20, 20, 0.15);
+    position: absolute;
+    left: 0;
+    left: auto;
+    right: -10px;
+    bottom: 0;
+    display: block;
+    -webkit-transform: rotate(-44deg);
+    -moz-transform: rotate(-44deg);
+    -o-transform: rotate(-44deg);
+    -ms-transform: rotate(-44deg);
+    transform: rotate(-44deg);
+}
+
+/*billing*/
+.invoiceForm {
+    border-radius: 5px;
+    padding-top: 20px;
+
+}
+
+.cth-tab-container {
+    padding-top: 12px;
+}
+
+.cth-tab-content {
+    border: 1px solid #eee;
+}
+
+
+.round {
+    border-radius: 50%;
+}
+
+caption.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    background-color: aliceblue;
+    padding: 5px;
+}
+
+#listOfNotes li:hover {
+    cursor: pointer;
+    background-color: lightblue;
+}
+
+#searchNoteInput {
+    background-image: url(../images/search-Icon-png-715x715.png);
+    background-repeat: no-repeat;
+    background-size: 30px 35px;
+    padding-left: 40px;
+}
+
+#listOfNotes {
+    display: none;
+    overflow: auto;
+    background-color: white;
+    height: 570px;
+}
+
+#emptyNotes {
+    background-color: white;
+    height: 570px;
+}
+
+#listOfNotes li {
+    font-size: 16px;
+}
+
+#rightSideNoteDetails {
+    height: 695px;
+    position: absolute;
+}
+
+#loadImage {
+    display: none;
+    width: 100px;
+    height: 89px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+#loadImage2 {
+    display: none;
+    width: 100px;
+    height: 89px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+#shareBtnUpdate {
+    display: none;
+}
+
+.textAreaforNote {
+    height: 522px;
+}
+
+#changeToUpdate {
+    display: none;
+}
+
+#loadingIcon2 {
+    display: none;
+}
+
+#studentEditBtn {
+    display: none;
+}
+
+#loadingIcon {
+    display: none;
+    padding-top: 40px;
+    padding-left: 55px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: white;
+    background-color: #cce6ff;
+    border-right: 3px solid #007bff;
+}
+/*for signUp page cards*/
+.card-input-element {
+    display: none;
+}
+.card-input {
+    margin: 10px;
+    padding: 00px;
+}
+.card-input-element:checked + .card-input{
+    box-shadow: 2px 2px 10px 2px #888888!important;
+    border: 2px solid #4db94c!important;
+}
+.card-input-element:checked + .card-input i{
+    color: #4db94c!important;
+}
+.circleForStudentIcon{
+display: inline-block;border-radius: 25px;box-shadow: 0px 0px 2px ;
+padding: 0.5em;
+/*background: #FFAB91;*/
+font-size: 20px;
+/*color: white;*/
+}
+.circleForEventIcon{
+     display: inline-block;border-radius: 25px;box-shadow: 0px 0px 2px ;
+     padding: 0.5em;
+     /*background:#FFD54F;*/
+     font-size: 20px;
+     /*color: white;*/
+ }
+.circleForInvoiceIcon{
+    display: inline-block;border-radius: 25px;box-shadow: 0px 0px 2px ;
+    padding: 0.5em;
+    /*background: #9575CD;*/
+    font-size: 20px;
+    /*color: black;*/
+}
+.circleForNoteIcon{
+    display: inline-block;border-radius: 60px;box-shadow: 0px 0px 2px #888 ;
+    padding: 0.5em;
+    /*background: #B2DFDB;*/
+    font-size: 20px;
+    /*color: white;*/
+}
+.activityActionTextColor
+{
+    /*color: #00B0FF;*/
+}
+#upcEvtDashboardCard
+{
+    height: 272px;
+}
+.activityLink
+{
+    color: inherit;
+    cursor: pointer;
+}
+
+.activityTypeIconSize
+{
+    font-size: 15px;
+}
+
+#loader {
+    border: 6px solid #f3f3f3;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-top: 6px solid #555;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.centerLoader{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+}
+
+.sharedIcon{
+    color:forestgreen;
+}
+
+.unSharedIcon{
+    color:grey;
+}
+
+.shareBadge
+{
+    padding: 0.5em;
+}
+
+.badgeIcon{
+    position: relative;
+    color: #fff;
+    background-color: #FF4081;
+    border-radius: 20%;
+    font-family: "Roboto";
+    top: -10px;
+    /* Alignment */
+    line-height: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Adjust as required: */
+    padding: 5px;
+}
+
+/* Height = width */
+.badgeIcon::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+.circleForStudentCountIcon{
+    display: inline-block;border-radius: 100px;box-shadow: 0px 0px 2px ;
+    font-size: 12px;
+    margin: 4px 2px;
+    display: inline-block;
+    padding: 6px;
+    text-align: center;
+    text-decoration: none;
+}
+.downloadIcon{
+    padding-left: 25px;
+    cursor: pointer;
+}
+#shareIconIndicator{
+    cursor: pointer;
+}
+#filesTabPage{
+    text-align: center;
+    display: none
+}
+#filesTable{
+    display: none;
+}
+#fileTypeImage{
+    color: lightseagreen;
+    font-size: 20px;
+}

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>Academy Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+
+    <service name="noSyntaxError" engine="interface">
+        <description>
+            Dummy service to prevent empty files and syntax error - Remove when the 1st real service will be added here
+        </description>
+    </service>
+
+    <service name="authenticate" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.AuthenticateServices" invoke="authenticate">
+        <description>Authenticate academy</description>
+        <attribute name="email" type="String" mode="IN" optional="false"/>
+        <attribute name="password" type="String" mode="IN" optional="false"/>
+        <attribute name="accessToken" type="String" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="logout" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.AuthenticateServices" invoke="logout">
+        <description>Logout academy</description>
+        <attribute name="accessToken" type="String" mode="IN" optional="false"/>
+    </service>
+
+    <service name="validateToken" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.AuthenticateServices" invoke="validateToken">
+        <description>Validate academy</description>
+        <attribute name="accessToken" type="String" mode="IN" optional="false"/>
+        <attribute name="partyId" type="String" mode="OUT" optional="false"/>
+        <attribute name="userLoginId" type="String" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="readAcademy" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.AcademyServices" invoke="readAcademy">
+        <description>Read academy</description>
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="academyVO" type="com.cth.academy.model.AcademyVO" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="createAcademy" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.AcademyServices" invoke="createAcademy">
+        <description>Create academy</description>
+        <attribute name="firstName" type="String" mode="IN" optional="false"/>
+        <attribute name="lastName" type="String" mode="IN" optional="true"/>
+        <attribute name="email" type="String" mode="IN" optional="false"/>
+        <attribute name="mobile" type="String" mode="IN" optional="true"/>
+        <attribute name="password" type="String" mode="IN" optional="false"/>
+        <attribute name="countryGeoId" type="String" mode="IN" optional="true"/>
+        <attribute name="academyId" type="String" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="assignSubscriptionToAcademy" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.AcademyServices" invoke="assignSubscriptionToAcademy">
+        <description>Assign subscription to academy</description>
+        <attribute name="productId" type="String" mode="IN" optional="false"/>
+        <attribute name="productValidity" type="String" mode="IN" optional="false"/>
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="orderId" type="String" mode="OUT" optional="false"/>
+        <attribute name="subscriptionId" type="String" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="updateAcademy" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.AcademyServices" invoke="updateAcademy">
+        <description>Update academy</description>
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="firstName" type="String" mode="IN" optional="true"/>
+        <attribute name="lastName" type="String" mode="IN" optional="true"/>
+        <attribute name="email" type="String" mode="IN" optional="true"/>
+        <attribute name="mobile" type="String" mode="IN" optional="true"/>
+        <attribute name="countryGeoId" type="String" mode="IN" optional="true"/>
+        <attribute name="academyId" type="String" mode="OUT" optional="false"/>
+    </service>
+
+    <!--student services-->
+
+    <service name="fetchStudentsOfAcademy" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.StudentServices" invoke="fetchStudentsOfAcademy">
+        <description>Remove Student from Academy</description>
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="students" type="List" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="createStudent" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.StudentServices" invoke="createStudent">
+        <description>Add a new Student to Academy</description>
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="firstName" type="String" mode="IN" optional="false"/>
+        <attribute name="lastName" type="String" mode="IN" optional="true"/>
+        <attribute name="email" type="String" mode="IN" optional="false"/>
+        <attribute name="mobile" type="String" mode="IN" optional="true"/>
+        <attribute name="countryGeoId" type="String" mode="IN" optional="true"/>
+        <attribute name="studentId" type="String" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="updateStudent" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.StudentServices" invoke="updateStudent">
+        <description>Update Student details</description>
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="studentId" type="String" mode="IN" optional="false"/>
+        <attribute name="firstName" type="String" mode="IN" optional="false"/>
+        <attribute name="lastName" type="String" mode="IN" optional="true"/>
+        <attribute name="countryGeoId" type="String" mode="IN" optional="true"/>
+        <attribute name="mobile" type="String" mode="IN" optional="true"/>
+    </service>
+
+
+    <service name="removeStudentFromAcademy" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.StudentServices" invoke="removeStudentFromAcademy">
+        <description>Remove Student from Academy</description>
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="studentId" type="String" mode="IN" optional="false"/>
+    </service>
+
+</services>

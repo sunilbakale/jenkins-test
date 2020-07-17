@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="home">
+        <section>
+            <actions>
+                <set field="title" value="Home"/>
+                <set field="currentPage" value="home"/>
+                <set field="currentViewId" value="HOME"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/home.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<platform-specific>
+							<html>
+								<html-template
+									location="component://portal/webapp/portal/pages/home.ftl" />
+							</html>
+						</platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="students">
+        <section>
+            <actions>
+                <set field="title" value="Students"/>
+                <set field="currentPage" value="students"/>
+                <set field="currentViewId" value="STUDENTS"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/students.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/students/students.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="new_student">
+        <section>
+            <actions>
+                <set field="title" value="New Student"/>
+                <set field="currentPage" value="new student"/>
+                <set field="currentViewId" value="NEW STUDENT"/>
+
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/students/new_student.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="edit_student">
+        <section>
+            <actions>
+                <set field="title" value="EditStudents"/>
+                <set field="currentPage" value="EditStudents"/>
+                <set field="currentViewId" value="EDIT STUDENTS"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/editstudent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/students/edit_student.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="calender">
+        <section>
+            <actions>
+                <set field="title" value="Calendar"/>
+                <set field="currentPage" value="Calendar"/>
+                <set field="currentViewId" value="CALENDAR"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/Calender.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/calender.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="invoices">
+        <section>
+            <actions>
+                <set field="title" value="Invoices"/>
+                <set field="currentPage" value="invoices"/>
+                    <set field="currentViewId" value="INVOICES"/>
+                    <script location="component://portal/webapp/portal/WEB-INF/actions/invoices.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/billing/invoices.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="new_invoice">
+        <section>
+            <actions>
+                <set field="title" value="New Invoice"/>
+                <set field="currentPage" value="new_invoice"/>
+                <set field="currentViewId" value="NEW INVOICE"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/invoices.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/billing/new_invoice.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="edit_invoice">
+        <section>
+            <actions>
+                <set field="title" value="Invoice"/>
+                <set field="currentPage" value="edit_invoice"/>
+                <set field="currentViewId" value="EDIT INVOICE"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/edit_invoice.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/billing/edit_invoice.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="invoices_tab">
+        <section>
+            <actions>
+                <set field="title" value="invoices_tab"/>
+                <set field="currentPage" value="invoices_tab"/>
+                <set field="currentViewId" value="INVOICES TAB"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/invoices_tab.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EmptyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/billing/invoices_tab.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="new_expense">
+        <section>
+            <actions>
+                <set field="title" value="New Expense"/>
+                <set field="currentPage" value="new_expense"/>
+                <set field="currentViewId" value="NEW EXPENSE"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/new_expense.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/billing/new_expense.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="editExpense">
+        <section>
+            <actions>
+                <set field="title" value="editExpense"/>
+                <set field="currentPage" value="editExpense"/>
+                <set field="currentViewId" value="EDIT EXPENSE"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/edit_expense.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/billing/edit_expense.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="overView_tab">
+        <section>
+            <actions>
+                <set field="title" value="transactions"/>
+                <set field="currentPage" value="transactions"/>
+                <set field="currentViewId" value="TRANSACTION"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/overView_tab.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EmptyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/billing/overView_tab.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="transactions">
+        <section>
+            <actions>
+                <set field="title" value="transactions"/>
+                <set field="currentPage" value="transactions"/>
+                <set field="currentViewId" value="TRANSACTION"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/transaction.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EmptyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/billing/transactions_tab.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="notes">
+        <section>
+            <actions>
+                <set field="title" value="Notes"/>
+                <set field="currentPage" value="notes"/>
+                <set field="currentViewId" value="NOTES"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/privateNotes.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/notes.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="new_private_note">
+        <section>
+            <actions>
+                <set field="title" value="New Note"/>
+                <set field="currentPage" value="new_private_notes"/>
+                <set field="currentViewId" value="NEW PRIVATE NOTES"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/newPrivateNotes.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/new_private_note.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="privateNotes">
+        <section>
+            <actions>
+                <set field="privateNote" value="privateNote"/>
+                <set field="currentPage" value="privateNote"/>
+                <set field="currentViewId" value="PRIVATE NOTE"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/privateNotes.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EmptyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/privateNotes.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="edit_private_note">
+        <section>
+            <actions>
+                <set field="edit_privateNote" value="edit_privateNote"/>
+                <set field="currentPage" value="edit_privateNote"/>
+                <set field="currentViewId" value="EDIT PRIVATE NOTE"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/edit_privateNote.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/edit_private_note.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="support">
+        <section>
+            <actions>
+                <set field="support" value="support"/>
+                <set field="currentPage" value="support"/>
+                <set field="currentViewId" value="SUPPORT"/>
+
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/support.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="login">
+        <section>
+            <actions>
+                <set field="title" value="Login"/>
+                <set field="currentPage" value="home"/>
+                <set field="currentViewId" value="LOGIN"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="PreLoginDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/login.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="signup">
+        <section>
+            <actions>
+                <set field="title" value="Sign Up"/>
+                <set field="currentPage" value="userRegistration"/>
+                <set field="currentViewId" value="USERREGISTRATION"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="PreLoginDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/signup.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="forgot_password">
+        <section>
+            <actions>
+                <set field="title" value="forgot_password"/>
+                <set field="currentPage" value="forgot_password"/>
+                <set field="currentViewId" value="FORGOT PASSWORD"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/forgot_password.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="my_account">
+        <section>
+            <actions>
+                <set field="title" value="My Account"/>
+                <set field="currentPage" value="my_account"/>
+                <set field="currentViewId" value="MY ACCOUNT"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/myAccount.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/myaccount/myAccount.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="generalInfo">
+        <section>
+            <actions>
+                <set field="title" value="generalInfo"/>
+                <set field="currentPage" value="generalInfo"/>
+                <set field="currentViewId" value="GENERAL INFO"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/myAccount.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EmptyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/myaccount/generalInfo.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="preference">
+        <section>
+            <actions>
+                <set field="title" value="preference"/>
+                <set field="currentPage" value="preference"/>
+                <set field="currentViewId" value="PREFERENCE"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/preference.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EmptyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/myaccount/preference.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="userBilling">
+        <section>
+            <actions>
+                <set field="title" value="userBilling"/>
+                <set field="currentPage" value="userBilling"/>
+                <set field="currentViewId" value="USER BILLING"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/myAccount.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EmptyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/myaccount/userBilling.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="security">
+        <section>
+            <actions>
+                <set field="title" value="security"/>
+                <set field="currentPage" value="security"/>
+                <set field="currentViewId" value="security"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/myAccount.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EmptyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/myaccount/security.ftl" />
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="files">
+        <section>
+            <actions>
+                <set field="title" value="Files"/>
+                <set field="currentPage" value="files"/>
+                <set field="currentViewId" value="FILES"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/files.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="GeneralDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/files/files.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="files_tab">
+        <section>
+            <actions>
+                <set field="title" value="Files Tab"/>
+                <set field="currentPage" value="files_tab"/>
+                <set field="currentViewId" value="FILES TAB"/>
+                <script location="component://portal/webapp/portal/WEB-INF/actions/files.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EmptyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/files/files_tab.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="sharedFiles_tab">
+        <section>
+            <actions>
+                <set field="title" value="Shared Files Tab"/>
+                <set field="currentPage" value="sharedFiles_tab"/>
+                <set field="currentViewId" value="SHARED FILES TAB"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="EmptyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template
+                                        location="component://portal/webapp/portal/pages/files/sharedFiles_tab.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+</screens>

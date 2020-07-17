@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+    <!--<SecurityPermission description="View operations in the Academy Component." permissionId="_VIEW"/>
+    <SecurityPermission description="Create operations in the Academy Component." permissionId="_CREATE"/>
+    <SecurityPermission description="Update operations in the Academy Component." permissionId="_UPDATE"/>
+    <SecurityPermission description="Delete operations in the Academy Component." permissionId="_DELETE"/>
+    <SecurityPermission description="ALL operations in the Academy Component." permissionId="_ADMIN"/>-->
+
+    <!--<SecurityGroupPermission groupId="SUPER" permissionId="_ADMIN"/>-->
+
+</entity-engine-xml>

@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		   xmlns="http://ofbiz.apache.org/Site-Conf" xsi:schemaLocation="http://ofbiz.apache.org/Site-Conf http://ofbiz.apache.org/dtds/site-conf.xsd">
+
+	<include location="component://common/webcommon/WEB-INF/common-controller.xml" />
+	<include location="component://commonext/webapp/WEB-INF/controller.xml" />
+	<include location="component://content/webapp/content/WEB-INF/controller.xml" />
+
+	<handler name="java" type="request"
+		class="org.apache.ofbiz.webapp.event.JavaEventHandler" />
+	<handler name="service" type="request"
+		class="org.apache.ofbiz.webapp.event.ServiceEventHandler" />
+	<handler name="service-multi" type="request"
+		class="org.apache.ofbiz.webapp.event.ServiceMultiEventHandler" />
+	<handler name="simple" type="request"
+		class="org.apache.ofbiz.webapp.event.SimpleEventHandler" />
+
+	<handler name="jsp" type="view" class="org.apache.ofbiz.webapp.view.JspViewHandler" />
+	<handler name="http" type="view"
+		class="org.apache.ofbiz.webapp.view.HttpViewHandler" />
+	<handler name="screen" type="view"
+	    class="org.apache.ofbiz.widget.renderer.macro.MacroScreenViewHandler"/>
+	<handler name="simplecontent" type="view"
+		class="org.apache.ofbiz.content.view.SimpleContentViewHandler" />
+	<handler name="screenfop" type="view"
+		class="org.apache.ofbiz.widget.renderer.fo.ScreenFopViewHandler" />
+
+	<!-- Request Mappings -->
+	<!-- default request; call into CMS -->
+	<default-request request-uri="home" />
+
+	<!-- Security Request Mappings -->
+	<request-map uri="createTeacherHelperAccount">
+		<security https="true" auth="false"/>
+		<event type="java" path="com.cth.portal.events.AcademyEvents" invoke="createTeacherHelperAccount"/>
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="login">
+		<security https="true" auth="false" />
+		<event type="java" path="org.apache.ofbiz.webapp.control.LoginWorker" invoke="login" />
+		<response name="success" type="request-redirect" value="home" />
+		<response name="requirePasswordChange" type="view" value="requirePasswordChange" />
+		<response name="error" type="view" value="login" />
+	</request-map>
+
+	<request-map uri="logout">
+		<security https="true" auth="true" />
+		<event type="java" path="org.apache.ofbiz.webapp.control.LoginWorker"
+			invoke="logout" />
+		<response name="success" type="request-redirect" value="home" />
+		<response name="error" type="view" value="home" />
+	</request-map>
+
+	<request-map uri="autoLogout">
+		<security https="true" auth="true" />
+		<event type="java" path="org.apache.ofbiz.webapp.control.LoginWorker"
+			invoke="autoLoginRemove" />
+		<response name="success" type="request-redirect" value="home" />
+		<response name="error" type="view" value="home" />
+	</request-map>
+
+	<request-map uri="updatePassword">
+		<security https="true" auth="false" />
+		<event type="java" path="com.cth.portal.events.AcademyEvents" invoke="updatePassword" />
+		<response name="success" type="request" value="json" />
+		<response name="error" type="request" value="json" />
+	</request-map>
+	<!-- End of Security Mappings -->
+
+	<request-map uri="home">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="home" />
+	</request-map>
+
+	<request-map uri="students">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="students" />
+	</request-map>
+	<request-map uri="new_student">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="new_student" />
+	</request-map>
+	<request-map uri="edit_student">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="edit_student" />
+	</request-map>
+	<request-map uri="create_student">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.StudentEvents" invoke="addStudent" />
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+
+	<request-map uri="updateStudent">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.StudentEvents" invoke="updateStudent" />
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="remove_student">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.StudentEvents" invoke="removeStudentFromAcademy" />
+		<response name="success" type="request" value="json" />
+		<response name="error" type="request" value="json" />
+	</request-map>
+	<request-map uri="calender">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="calender" />
+	</request-map>
+	<request-map uri="createCalendarEvent">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.CalenderEvents" invoke="createCalendarEvent" />
+		<response name="success" type="request" value="json" />
+		<response name="error" type="request" value="json" />
+	</request-map>
+	<request-map uri="fetchStudentData">
+		<security https="true" auth="true" />
+		<event type="groovy" path="component://portal/webapp/portal/WEB-INF/actions/getStudent.groovy"/>
+		<response name="success" type="none" />
+		<response name="success" type="request" value="json" />
+	</request-map>
+	<request-map uri="fetchAllStudents">
+		<security https="true" auth="true"/>
+		<event type="groovy" path="component://portal/webapp/portal/WEB-INF/actions/fetchAllStudents.groovy"/>
+		<response name="success" type="none" />
+	</request-map>
+	<request-map uri="fetchCalendarEventsAjax">
+		<security https="true" auth="true"/>
+		<event type="groovy" path="component://portal/script/com/cth/portal/calendar/FetchCalendarEventsAjax.groovy"/>
+		<response name="success" type="none" />
+	</request-map>
+
+	<request-map uri="fetchCalendarEventAjaxById">
+		<security https="true" auth="true"/>
+		<event type="groovy" path="component://portal/script/com/cth/portal/calendar/fetchCalendarEventAjaxById.groovy"/>
+		<response name="success" type="none" />
+	</request-map>
+
+	<request-map uri="fetchCalendarEvents">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.CalenderEvents" invoke="fetchCalendarEvents" />
+		<response name="success" type="request" value="json" />
+	</request-map>
+	<request-map uri="updateCalendarEvent">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.CalenderEvents" invoke="updateCalendarEvent" />
+		<response name="success" type="request" value="json" />
+		<response name="error" type="request" value="json" />
+	</request-map>
+
+	<request-map uri="deleteEvent">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.CalenderEvents" invoke="deleteEvent" />
+		<response name="success" type="request" value="json" />
+		<response name="error" type="request" value="json" />
+	</request-map>
+
+	<request-map uri="invoices">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="invoices" />
+	</request-map>
+	<request-map uri="invoices_tab">
+		<security https="true" auth="true"/>
+		<response name="success" type="view" value="invoices_tab" />
+	</request-map>
+	<request-map uri="fetchAcademyInvoice">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.BillingEvents" invoke="fetchAcademyInvoice" />
+		<response name="success" type="request" value="json" />
+		<response name="error" type="request" value="json" />
+	</request-map>
+	<request-map uri="new_invoice">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="new_invoice" />
+	</request-map>
+	<request-map uri="createNewInvoice">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.BillingEvents" invoke="createNewInvoice" />
+		<response name="success" type="request" value="json" />
+		<response name="error" type="request" value="json" />
+	</request-map>
+	<request-map uri="edit_invoice">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="edit_invoice" />
+	</request-map>
+	<request-map uri="updateInvoicePayment">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.BillingEvents" invoke="updateInvoicePayment" />
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<!--<request-map uri="invoices_tab">
+		<security https="true" auth="true"/>
+		<event type="groovy" path="component://portal/webapp/portal/WEB-INF/actions/invoices_tab.groovy"/>
+		<response name="success" type="view" />
+	</request-map>-->
+	<request-map uri="new_expense">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="new_expense"/>
+	</request-map>
+
+	<request-map uri="createExpense">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.ExpenseEvent" invoke="createExpense" />
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="remove_expense">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.ExpenseEvent" invoke="removeExpense" />
+		<response name="success" type="request" value="json" />
+		<response name="error" type="request" value="json" />
+	</request-map>
+	<request-map uri="updateExpense">
+		<security https="true" auth="true" />
+		<event type="java" path="com.cth.portal.ExpenseEvent" invoke="updateAcademyExpense" />
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="cancelAcademyInvoice">
+		<security https="true" auth="true"/>
+		<event type="java" path="com.cth.portal.BillingEvents" invoke="cancelAcademyInvoice"/>
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="editExpense">
+		<security https="true" auth="true"/>
+		<response name="success" type="view" value="editExpense"/>
+	</request-map>
+	<request-map uri="transaction">
+		<security https="true" auth="true"/>
+<!--		<event type="groovy" path="component://portal/webapp/portal/WEB-INF/actions/transaction.groovy"/>-->
+		<response name="success" type="view" value="transaction" />
+	</request-map>
+	<request-map uri="loginpage">
+		<security https="true" />
+		<response name="success" type="view" value="login" />
+	</request-map>
+	<request-map uri="my_account">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="my_account" />
+	</request-map>
+	<request-map uri="signup">
+		<security https="true" />
+		<response name="success" type="view" value="signup" />
+	</request-map>
+	<request-map uri="forgot_password">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="forgot_password" />
+	</request-map>
+	<request-map uri="notes">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="notes" />
+	</request-map>
+	<request-map uri="new_private_note">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="new_private_note" />
+	</request-map>
+	<request-map uri="getPrivateNote">
+		<security https="true" auth="true"/>
+		<event type="groovy" path="component://portal/webapp/portal/WEB-INF/actions/getPrivateNote.groovy"/>
+		<response name="success" type="none" />
+	</request-map>
+	<request-map uri="fetchAllNotes">
+		<security https="true" auth="true"/>
+		<event type="groovy" path="component://portal/webapp/portal/WEB-INF/actions/fetchAllNotes.groovy"/>
+		<response name="success" type="none" />
+	</request-map>
+	<request-map uri="savePvtNote">
+		<security https="true" auth="true"/>
+		<event type="java" path="com.cth.portal.NotesEvents" invoke="createPvtNote"/>
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="updatePvtNote">
+		<security https="true" auth="true"/>
+		<event type="java" path="com.cth.portal.NotesEvents" invoke="updatePvtNote"/>
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="removePvtNote">
+		<security https="true" auth="true"/>
+		<event type="java" path="com.cth.portal.NotesEvents" invoke="deletePvtNote"/>
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="edit_private_note">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="edit_private_note" />
+	</request-map>
+	<request-map uri="support">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="support" />
+	</request-map>
+	<request-map uri="updateAcademy">
+		<security https="true" auth="true"/>
+		<event type="java" path="com.cth.portal.events.AcademyEvents" invoke="updateAcademy"/>
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="GeneralInfo">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="GeneralInfo" />
+	</request-map>
+	<request-map uri="preference">
+		<security https="true" auth="true" />
+		<response name="success" type="view" value="preference" />
+	</request-map>
+	<request-map uri="updatePreferredCurrency">
+		<security https="true" auth="true"/>
+		<event type="java" path="com.cth.portal.events.AcademyEvents" invoke="updatePreferredCurrency"/>
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="files">
+		<security https="true" auth="true"/>
+		<response name="success" type="view" value="files"/>
+	</request-map>
+	<request-map uri="uploadFile">
+		<security https="true" auth="true"/>
+		<event type="java" path="com.cth.portal.FilesEvents" invoke="newFileUpload"/>
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="fetchAllContentRecords">
+		<security https="true" auth="true"/>
+		<event type="groovy" path="component://portal/webapp/portal/WEB-INF/actions/fetchAllContents.groovy"/>
+		<response name="success" type="request" value="json"/>
+	</request-map>
+	<request-map uri="downloadFile">
+		<security https="true" auth="true"/>
+		<event type="java" path="com.cth.portal.FilesEvents" invoke="downloadFile"/>
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="deleteContentRecord">
+		<security https="true" auth="true"/>
+		<event type="java" path="com.cth.portal.FilesEvents" invoke="deleteContentRecord"/>
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="createContentSharing">
+		<security https="true" auth="true"/>
+		<event type="java" path="com.cth.portal.FilesEvents" invoke="createContentSharing"/>
+		<response name="success" type="request" value="json"/>
+		<response name="error" type="request" value="json"/>
+	</request-map>
+	<request-map uri="getSharedStudents">
+		<security https="true" auth="true"/>
+		<event type="groovy" path="component://portal/webapp/portal/WEB-INF/actions/fetchSharedStudents.groovy"/>
+		<response name="success" type="none" />
+	</request-map>
+	<request-map uri="fetchSharedFiles">
+		<security https="true" auth="true"/>
+		<event type="groovy" path="component://portal/webapp/portal/WEB-INF/actions/fetchSharedFiles.groovy"/>
+		<response name="success" type="none" />
+	</request-map>
+
+	<!-- View Mappings - START -->
+	<view-map name="home" type="screen"
+		page="component://portal/widget/PortalScreens.xml#home" />
+	<view-map name="students" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#students" />
+	<view-map name="new_student" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#new_student" />
+	<view-map name="edit_student" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#edit_student" />
+	<view-map name="remove_student" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#remove_student" />
+	<view-map name="calender" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#calender" />
+	<view-map name="createCalendarEvent" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#calender" />
+	<view-map name="updateCalendarEvent" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#calender" />
+	<view-map name="deleteEvent" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#calender" />
+
+	<view-map name="login" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#login" />
+	<view-map name="my_account" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#my_account" />
+	<view-map name="invoices" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#invoices" />
+
+	<view-map name="new_invoice" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#new_invoice" />
+	<view-map name="edit_invoice" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#edit_invoice" />
+
+	<view-map name="updateInvoicePayment" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#updateInvoicePayment" />
+	<view-map name="updateExpense" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#invoices" />
+	<view-map name="invoices_tab" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#invoices_tab" />
+	<view-map name="cancelAcademyInvoice" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#cancelAcademyInvoice" />
+
+	<view-map name="signup" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#signup" />
+
+	<view-map name="transaction" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#transactions" />
+	<view-map name="new_expense" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#new_expense" />
+	<view-map name="editExpense" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#editExpense" />
+	<view-map name="forgot_password" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#forgot_password" />
+	<view-map name="notes" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#notes" />
+	<view-map name="new_private_note" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#new_private_note" />
+	<view-map name="edit_private_note" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#edit_private_note" />
+	<view-map name="support" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#support" />
+	<view-map name="GeneralInfo" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#GeneralInfo" />
+	<view-map name="preference" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#preference" />
+	<view-map name="files" type="screen"
+			  page="component://portal/widget/PortalScreens.xml#files"/>
+	</site-conf>

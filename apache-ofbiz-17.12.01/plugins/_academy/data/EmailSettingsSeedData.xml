@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+
+    <!-- Email Settings -->
+    <EnumerationType description="Users Email Notification" enumTypeId="USR_EMAIL" hasTable="N" parentTypeId=""/>
+    <Enumeration description="Verify User Email" enumCode="VERIFY_USER" enumId="VERIFY_USER_EMAIL" enumTypeId="USR_EMAIL" sequenceId="25"/>
+    <ProductStoreEmailSetting productStoreId="9000" emailType="VERIFY_USER_EMAIL" bodyScreenLocation="component://academy/widget/AcademyEmailScreens.xml#UserEmailVerification"
+                              subject="Welcome to Teachers Helper, verify your account"
+                              bccAddress="" fromAddress="infiproton@gmail.com"/>
+
+
+    <Enumeration description="New student Onboarded email" enumCode="NEW_STD_ONBOARDED" enumId="NEW_STD_ONBOARDED" enumTypeId="USR_EMAIL" sequenceId="26" />
+    <ProductStoreEmailSetting productStoreId="9000" emailType="NEW_STD_ONBOARDED"
+                              bodyScreenLocation="component://academy/widget/AcademyEmailScreens.xml#studentEmailNotification"
+                              subject="Welcome to CTH"
+                              bccAddress=""
+                              fromAddress="infiproton@gmail.com"/>
+
+</entity-engine-xml>

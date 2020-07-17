@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<entity-engine-xml>
+
+
+    <Party partyId="john.teacher" partyTypeId="PERSON" />
+    <PartyRole partyId="john.teacher" roleTypeId="TEACHER"/>
+    <Person partyId="john.teacher" firstName="John" lastName="Teacher"/>
+    <UserLogin partyId="john.teacher" userLoginId="john.teacher@gmail.com" currentPassword="$SHA$sS4oVyFIywKO56R$QyghqT3Gx6XBgIj9GnQZx0GjxeA" passwordHint="" enabled="Y"/>
+    <!--<UserLoginSecurityGroup groupId="TEACHER_SEC_GROUP" userLoginId="john.teacher"/>-->
+
+    <Party partyId="alex.student" partyTypeId="PERSON" />
+    <PartyRole partyId="alex.student" roleTypeId="STUDENT"/>
+    <Person partyId="alex.student" firstName="Alex" lastName="Student"/>
+    <PartyRelationship partyIdFrom="john.teacher" partyIdTo="alex.student"
+                       partyRelationshipTypeId="STUDENT"
+                       roleTypeIdFrom="TEACHER" roleTypeIdTo="STUDENT"
+                       fromDate="2019-01-01 00:00:00.000"/>
+
+    <Party partyId="bryan.student" partyTypeId="PERSON" />
+    <PartyRole partyId="bryan.student" roleTypeId="STUDENT"/>
+    <Person partyId="bryan.student" firstName="Bryan" lastName="Student"/>
+    <PartyRelationship partyIdFrom="john.teacher" partyIdTo="bryan.student"
+                       partyRelationshipTypeId="STUDENT"
+                       roleTypeIdFrom="TEACHER" roleTypeIdTo="STUDENT"
+                       fromDate="2019-01-01 00:00:00.000"/>
+
+</entity-engine-xml>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<entity-engine-xml>
+
+
+    <RoleType roleTypeId="TEACHER" description="Teacher Role" parentTypeId="SUBSCRIBER"/>
+    <RoleType roleTypeId="STUDENT" description="Student Role" parentTypeId=""/>
+
+    <PartyRelationshipType description="" hasTable="Y" parentTypeId=""
+                           partyRelationshipName="Student" partyRelationshipTypeId="STUDENT" roleTypeIdValidFrom="" roleTypeIdValidTo=""/>
+
+
+
+    <!--<PartyRelationshipType partyRelationshipTypeId="ORG_ROLLUP" parentTypeId="GROUP_ROLLUP" partyRelationshipName="Sub-Organization"
+                           createdStamp="2014-01-01 00:00:00" createdTxStamp="2014-01-01 00:00:00" lastUpdatedStamp="2014-01-01 00:00:00" lastUpdatedTxStamp="2014-01-01 00:00:00"/>-->
+
+
+    <!-- PartyTypes -->
+    <!--<PartyType partyTypeId="GOVERNMENT_AGENCY" description="Government Agency" parentTypeId="LEGAL_ORGANIZATION" hasTable="N"
+               createdStamp="2014-01-01 00:00:00" createdTxStamp="2014-01-01 00:00:00" lastUpdatedStamp="2014-01-01 00:00:00" lastUpdatedTxStamp="2014-01-01 00:00:00"/>-->
+
+</entity-engine-xml>
+

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<entity-engine-xml>
+    <Party partyId="john.teacher" partyTypeId="PERSON" />
+    <PartyRole partyId="john.teacher" roleTypeId="TEACHER"/>
+    <Person partyId="john.teacher" firstName="John" lastName="Teacher"/>
+    <UserLogin partyId="john.teacher" userLoginId="john.teacher@gmail.com" currentPassword="$SHA$/XX$qEp_TAifoA29h06QCposjcf2Gfg" passwordHint="" enabled="Y"/>
+    <!-- password: 123456 -->
+    <!--<UserLoginSecurityGroup groupId="TEACHER_SEC_GROUP" userLoginId="john.teacher"/>-->
+
+    <Party partyId="alex.student" partyTypeId="PERSON" />
+    <PartyRole partyId="alex.student" roleTypeId="STUDENT"/>
+    <Person partyId="alex.student" firstName="Alex" lastName="Student"/>
+    <PartyRelationship partyIdFrom="john.teacher" partyIdTo="alex.student"
+                       partyRelationshipTypeId="STUDENT"
+                       roleTypeIdFrom="TEACHER" roleTypeIdTo="STUDENT"
+                       fromDate="2019-01-01 00:00:00.000"/>
+    <ContactMech contactMechId="alex.email" contactMechTypeId="EMAIL_ADDRESS" infoString="alex.student@gmail.com"/>
+    <PartyContactMech partyId="alex.student" contactMechId="alex.email" fromDate="2001-05-13 12:00:00.0"/>
+
+    <Party partyId="bryan.student" partyTypeId="PERSON" />
+    <PartyRole partyId="bryan.student" roleTypeId="STUDENT"/>
+    <Person partyId="bryan.student" firstName="Bryan" lastName="Student"/>
+    <PartyRelationship partyIdFrom="john.teacher" partyIdTo="bryan.student"
+                       partyRelationshipTypeId="STUDENT"
+                       roleTypeIdFrom="TEACHER" roleTypeIdTo="STUDENT"
+                       fromDate="2019-01-01 00:00:00.000"/>
+    <ContactMech contactMechId="bryan.email" contactMechTypeId="EMAIL_ADDRESS" infoString="bryan.student@gmail.com"/>
+    <PartyContactMech partyId="bryan.student" contactMechId="bryan.email" fromDate="2001-05-13 12:00:00.0"/>
+
+    <Party partyId="clinton.goyette" partyTypeId="PERSON" />
+    <PartyRole partyId="clinton.goyette" roleTypeId="STUDENT"/>
+    <Person partyId="clinton.goyette" firstName="Clinton" lastName="Goyette"/>
+    <PartyRelationship partyIdFrom="john.teacher" partyIdTo="clinton.goyette"
+                       partyRelationshipTypeId="STUDENT"
+                       roleTypeIdFrom="TEACHER" roleTypeIdTo="STUDENT"
+                       fromDate="2019-01-01 00:00:00.000"/>
+    <ContactMech contactMechId="clinton.email" contactMechTypeId="EMAIL_ADDRESS" infoString="clinton.goyette@gmail.com"/>
+    <PartyContactMech partyId="clinton.goyette" contactMechId="clinton.email" fromDate="2001-05-13 12:00:00.0"/>
+
+    <Party partyId="maryse.koss" partyTypeId="PERSON" />
+    <PartyRole partyId="maryse.koss" roleTypeId="STUDENT"/>
+    <Person partyId="maryse.koss" firstName="Maryse" lastName="Koss"/>
+    <PartyRelationship partyIdFrom="john.teacher" partyIdTo="maryse.koss"
+                       partyRelationshipTypeId="STUDENT"
+                       roleTypeIdFrom="TEACHER" roleTypeIdTo="STUDENT"
+                       fromDate="2019-01-01 00:00:00.000"/>
+    <ContactMech contactMechId="maryse.email" contactMechTypeId="EMAIL_ADDRESS" infoString="maryse.koss@gmail.com"/>
+    <PartyContactMech partyId="maryse.koss" contactMechId="maryse.email" fromDate="2001-05-13 12:00:00.0"/>
+
+
+    <!-- Normal Event -->
+    <Event eventId="john.teacher.event1" eventTypeId="CLASS" eventName="Chess Lesson"
+           startDateTime="2020-02-10 10:00:00" endDateTime="2020-02-10 11:00:00"
+           description="Chess Lesson event " eventLocation="ONLINE"
+           isRecurringEvent="N"
+    />
+    <EventRole roleTypeId="EVENT_ORGANIZER" eventId="john.teacher.event1" partyId="john.teacher"/>
+    <EventRole roleTypeId="EVENT_ATTENDEE" eventId="john.teacher.event1" partyId="alex.student"/>
+
+    <Event eventId="john.teacher.event2" eventTypeId="CLASS" eventName="Games Analysis"
+           startDateTime="2020-02-12 10:00:00" endDateTime="2020-02-12 11:00:00"
+           description="Games analysis event" eventLocation="ONLINE"
+           isRecurringEvent="N"
+    />
+    <EventRole roleTypeId="EVENT_ORGANIZER" eventId="john.teacher.event2" partyId="john.teacher"/>
+    <EventRole roleTypeId="EVENT_ATTENDEE" eventId="john.teacher.event2" partyId="alex.student"/>
+
+
+    <!-- Recurring Event -->
+
+</entity-engine-xml>
+

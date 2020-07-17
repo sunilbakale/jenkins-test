@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="UserEmailVerification">
+        <section>
+            <actions>
+
+            </actions>
+            <widgets>
+                <section>
+                    <widgets>
+                        <platform-specific><html><html-template location="component://academy/templates/email/UserEmailVerification.ftl"/></html></platform-specific>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="studentEmailNotification">
+        <section>
+            <actions>
+
+            </actions>
+            <widgets>
+                <section>
+                    <widgets>
+                        <platform-specific><html><html-template location="component://academy/templates/email/studentEmailNotification.ftl"/></html></platform-specific>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+</screens>

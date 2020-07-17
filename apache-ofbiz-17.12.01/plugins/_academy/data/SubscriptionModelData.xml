@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+    <ProductStore productStoreId="TEACHER_HELPER_STORE" storeName="Teacher Helper Store" companyName="CTH" defaultCurrencyUomId="USD"
+                  title="Teacher Helper Store" reserveInventory="N" isImmediatelyFulfilled="Y" checkInventory="N" requireInventory="N"/>
+    <!--Free Product-->
+    <Product productId="FREE" productTypeId="SERVICE" productName="Free" longDescription="Free Plan without price with very limited access" requireInventory="N"/>
+    <ProductPrice productId="FREE" productPricePurposeId="USAGE_CHARGE" productPriceTypeId="DEFAULT_PRICE"
+                  currencyUomId="USD" productStoreGroupId="_NA_" price="0" fromDate="2019-08-21 00:00:00"/>
+    <ProductAttribute productId="FREE" attrName="maxStudents" attrValue="5"/>
+    <ProductAttribute productId="FREE" attrName="maxEvents" attrValue="10"/>
+
+    <!--Paid Basic-->
+    <Product productId="PAID_BASIC" productTypeId="SERVICE" productName="Paid Basic" longDescription="Basic plan with better access"/>
+    <ProductPrice productId="PAID_BASIC" productPricePurposeId="USAGE_CHARGE" productPriceTypeId="DEFAULT_PRICE"
+                  currencyUomId="USD" productStoreGroupId="_NA_" price="19.99"  fromDate="2019-08-21 00:00:00"/>
+    <ProductAttribute productId="PAID_BASIC" attrName="maxStudents" attrValue="15"/>
+    <ProductAttribute productId="PAID_BASIC" attrName="maxEvents" attrValue="30"/>
+
+    <!-- Paid Premium-->
+    <Product productId="PAID_PREMIUM" productTypeId="SERVICE" productName="Paid Premium" longDescription="Free Plan without price with very limited access"/>
+    <ProductPrice productId="PAID_PREMIUM" productPricePurposeId="USAGE_CHARGE" productPriceTypeId="DEFAULT_PRICE"
+                  currencyUomId="USD" productStoreGroupId="_NA_" price="39.99"  fromDate="2019-08-21 00:00:00"/>
+    <ProductAttribute productId="PAID_PREMIUM" attrName="maxStudents" attrValue="-1"/>
+    <ProductAttribute productId="PAID_PREMIUM" attrName="maxEvents" attrValue="-1"/>
+
+</entity-engine-xml>

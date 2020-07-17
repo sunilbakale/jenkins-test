@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+    <RoleType roleTypeId="TEACHER" description="Teacher Role" parentTypeId="SUBSCRIBER"/>
+    <RoleType roleTypeId="STUDENT" description="Student Role" parentTypeId=""/>
+
+    <PartyRelationshipType description="" hasTable="Y" parentTypeId=""
+                           partyRelationshipName="Student" partyRelationshipTypeId="STUDENT" roleTypeIdValidFrom="" roleTypeIdValidTo=""/>
+
+    <RoleType roleTypeId="EVENT_ORGANIZER" hasTable="N" description="Event Organizer"/>
+    <RoleType roleTypeId="EVENT_ATTENDEE" hasTable="N" description="Event Attendee"/>
+
+
+</entity-engine-xml>

@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/services.xsd">
+    <description>Academy Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+
+    <service name="getEvents" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.EventServices" invoke="getEvents">
+        <description>Get Events for given Party - either Academy or Student</description>
+        <attribute name="partyId" type="String" mode="IN" optional="false"/>
+        <attribute name="startDate" type="Timestamp" mode="IN" optional="true"/>
+        <attribute name="thruDate" type="Timestamp" mode="IN" optional="true"/>
+        <attribute name="isPrivateEvent" type="String" mode="IN" optional="true"/>
+        <attribute name="events" type="List" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="createEvent" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.EventServices" invoke="createEvent">
+        <description>Create a new event.
+        For Recurring Events - startDateTime and endDateTime is only used for time value.
+            startDate and endDate fields defines the recurring event date range
+        </description>
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="type" type="String" mode="IN" optional="false"/>
+        <attribute name="title" type="String" mode="IN" optional="false"/>
+        <attribute name="description" type="String" mode="IN" optional="false"/>
+        <attribute name="eventLocation" type="String" mode="IN" optional="false"/>
+        <attribute name="startDateTime" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="endDateTime" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="isPrivateEvent" type="String" mode="IN" optional="true"/>
+        <attribute name="isRecurringEvent" type="String" mode="IN" optional="true"/>
+        <attribute name="notifyGuests" type="String" mode="IN" optional="true"/>
+        <attribute name="guestList" type="List" mode="IN" optional="true"/>
+        <attribute name="startDate" type="Timestamp" mode="IN" optional="true"/>
+        <attribute name="endDate" type="Timestamp" mode="IN" optional="true"/>
+        <attribute name="recurringType" type="String" mode="IN" optional="true"/>
+        <attribute name="until" type="String" mode="IN" optional="true"/>
+        <attribute name="numberOfOccurrence" type="Long" mode="IN" optional="true"/>
+        <attribute name="onSunday" type="String" mode="IN" optional="true"/>
+        <attribute name="onMonday" type="String" mode="IN" optional="true"/>
+        <attribute name="onTuesday" type="String" mode="IN" optional="true"/>
+        <attribute name="onWednesday" type="String" mode="IN" optional="true"/>
+        <attribute name="onThursday" type="String" mode="IN" optional="true"/>
+        <attribute name="onFriday" type="String" mode="IN" optional="true"/>
+        <attribute name="onSaturday" type="String" mode="IN" optional="true"/>
+        <attribute name="onMonthDay" type="Long" mode="IN" optional="true"/>
+        <attribute name="eventId" type="String" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="getEvent" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.EventServices" invoke="getEvent">
+        <description>Get Event by given ID</description>
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="eventId" type="String" mode="IN" optional="false"/>
+        <attribute name="event" type="com.cth.academy.model.EventVO" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="sampleEmail" engine="groovy" location="component://academy/script/SampleEmailService.groovy" invoke="">
+        <description>Sample Service to send email</description>
+        <attribute name="emailTo" type="String" mode="IN" optional="true"/>
+        <attribute name="yourName" type="String" mode="IN" optional="true"/>
+        <attribute name="result" type="String" mode="OUT"/>
+    </service>
+
+    <service name="deleteEvent" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.EventServices" invoke="deleteEvent">
+        <description>Delete Event / recurring event instance </description>
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="eventId" type="String" mode="IN" optional="false"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="updateEvent" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.EventServices" invoke="updateEvent">
+        <description>update a event</description>
+        <attribute name="eventId" type="String" mode="IN" optional="true"/>
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="type" type="String" mode="IN" optional="false"/>
+        <attribute name="title" type="String" mode="IN" optional="false"/>
+        <attribute name="description" type="String" mode="IN" optional="false"/>
+        <attribute name="eventLocation" type="String" mode="IN" optional="false"/>
+        <attribute name="startDateTime" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="endDateTime" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="isPrivateEvent" type="String" mode="IN" optional="true"/>
+        <attribute name="isRecurringEvent" type="String" mode="IN" optional="true"/>
+        <attribute name="notifyGuests" type="String" mode="IN" optional="true"/>
+        <attribute name="guestList" type="List" mode="IN" optional="true"/>
+        <attribute name="startDate" type="Timestamp" mode="IN" optional="true"/>
+        <attribute name="endDate" type="Timestamp" mode="IN" optional="true"/>
+        <attribute name="recurringType" type="String" mode="IN" optional="true"/>
+        <attribute name="until" type="String" mode="IN" optional="true"/>
+        <attribute name="numberOfOccurrence" type="Long" mode="IN" optional="true"/>
+        <attribute name="onSunday" type="String" mode="IN" optional="true"/>
+        <attribute name="onMonday" type="String" mode="IN" optional="true"/>
+        <attribute name="onTuesday" type="String" mode="IN" optional="true"/>
+        <attribute name="onWednesday" type="String" mode="IN" optional="true"/>
+        <attribute name="onThursday" type="String" mode="IN" optional="true"/>
+        <attribute name="onFriday" type="String" mode="IN" optional="true"/>
+        <attribute name="onSaturday" type="String" mode="IN" optional="true"/>
+        <attribute name="onMonthDay" type="Long" mode="IN" optional="true"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="getUpcomingEventSize" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.EventServices" invoke="getUpcomingEventSize">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="events" type="Map" mode="OUT" optional="false"/>
+    </service>
+    <service name="getAvailableProducts" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.ProductServices" invoke="getAvailableProducts">
+        <description>Get Product Details</description>
+        <attribute name="productList" type="List" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="createAcademyInvoice" invoke="createAcademyInvoice" location="com.cth.academy.services.InvoiceServices"
+             max-retry="3" require-new-transaction="true" engine="java">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="toParty" type="String" mode="IN" optional="false"/>
+        <attribute name="items" type="List" mode="IN" optional="false"/>
+        <attribute name="invoiceTypeId" type="String" mode="IN" optional="false"/>
+        <attribute name="discount" type="BigDecimal" mode="IN" optional="true"/>
+        <attribute name="dueDate" type="Timestamp" mode="IN" optional="true"/>
+        <attribute name="invoiceId" type="String" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="updateInvoicePayment" engine="java" require-new-transaction="true" max-retry="3"
+             invoke="updateInvoicePayment" location="com.cth.academy.services.InvoiceServices">
+        <attribute name="academyId" type="String" mode="IN" optional="true"/>
+        <attribute name="invoiceId" type="String" mode="IN" optional="true"/>
+        <attribute name="fromParty" type="String" mode="IN" optional="true"/>
+        <attribute name="amount" type="BigDecimal" mode="IN" optional="true"/>
+        <attribute name="paymentMethodTypeId" type="String" mode="IN" optional="true"/>
+        <attribute name="comments" type="String" mode="IN" optional="true"/>
+        <attribute name="paymentId" type="String" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="readAcademyInvoice" engine="java" require-new-transaction="true" max-retry="3"
+    location="com.cth.academy.services.InvoiceServices" invoke="readAcademyInvoice">
+        <attribute name="academyId" type="String" mode="IN" optional="true"/>
+        <attribute name="invoiceId" type="String" mode="IN" optional="true"/>
+        <attribute name="resultMap" type="Map" mode="OUT" optional="true"/>
+    </service>
+    <service name="readAcademyInvoiceItems" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.InvoiceServices" invoke="readAcademyInvoiceItems">
+        <attribute name="academyId" type="String" mode="IN" optional="true"/>
+        <attribute name="invoiceId" type="String" mode="IN" optional="true"/>
+        <attribute name="resultMap" type="List" mode="OUT" optional="true"/>
+    </service>
+    <service name="fetchAcademyInvoice" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.InvoiceServices" invoke="fetchAcademyInvoice">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="startDate" type="Timestamp" mode="IN" optional="true"/>
+        <attribute name="endDate" type="Timestamp" mode="IN" optional="true"/>
+        <attribute name="studentId" type="String" mode="IN" optional="true"/>
+        <attribute name="statusList" type="List" mode="IN" optional="true"/>
+        <attribute name="invoices" type="List" mode="OUT" optional="false"/>
+
+    </service>
+    <service name="fetchAcademyInvoiceByDate" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.InvoiceServices" invoke="fetchAcademyInvoiceByDate">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="fromDate" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="thruDate" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="invoicesByDate" type="List" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="createExpense" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.ExpenseServices" invoke="createExpense">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="title" type="String" mode="IN" optional="false" />
+        <attribute name="date" type="Timestamp" mode="IN" optional="false" />
+<!--        <attribute name="category" type="String" mode="IN" optional="false" />-->
+        <attribute name="amount" type="BigDecimal" mode="IN" optional="false" />
+        <attribute name="paymentMode" type="String" mode="IN" optional="false" />
+        <attribute name="description" type="String" mode="IN" optional="false" />
+        <attribute name="expenseId" type="String" mode="OUT" optional="false" />
+    </service>
+
+    <service name="getExpenses" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.ExpenseServices" invoke="getExpenses">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="expenses" type="List" mode="OUT" optional="false"/>
+     </service>
+
+    <service name="removeExpense" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.ExpenseServices" invoke="removeExpense">
+        <description>Delete Expense </description>
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="expenseId" type="String" mode="IN" optional="false" />
+        <attribute name="responseMessage" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="updateAcademyExpense" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.ExpenseServices" invoke="updateAcademyExpense">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="expenseId" type="String" mode="IN" optional="false"/>
+        <attribute name="title" type="String" mode="IN" optional="true" />
+        <attribute name="date" type="Timestamp" mode="IN" optional="true" />
+        <attribute name="amount" type="BigDecimal" mode="IN" optional="true" />
+        <attribute name="paymentMode" type="String" mode="IN" optional="true" />
+        <attribute name="description" type="String" mode="IN" optional="true" />
+        <attribute name="responseMessage" type="String" mode="OUT" optional="false" />
+    </service>
+
+    <service name="getExpense" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.ExpenseServices" invoke="getExpense" >
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="expenseId" type="String" mode="IN" optional="false"/>
+        <attribute name="resultMap" type="Map" mode="OUT" optional="false"/>
+    </service>
+    <service name="transactionLogInfoByDate" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.InvoiceServices" invoke="transactionLogInfoByDate">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="fromDate" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="thruDate" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="resultList" type="List" mode="OUT" optional="false"/>
+    </service>
+    <service name="transactionLog" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.InvoiceServices" invoke="transactionLog">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="resultList" type="List" mode="OUT" optional="false"/>
+    </service>
+    <service name="getPaymentInfoById" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.InvoiceServices" invoke="getPaymentInfoById">
+        <attribute name="invoiceId" type="String" mode="IN" optional="false"/>
+        <attribute name="partyIdFrom" type="String" mode="IN" optional="false"/>
+        <attribute name="paymentInfo" type="List" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="cancelAcademyInvoice" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.InvoiceServices" invoke="cancelAcademyInvoice">
+        <attribute name="partyIdFrom" type="String" mode="IN" optional="false"/>
+        <attribute name="invoiceId" type="String" mode="IN" optional="false"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="getInvoiceListTotalAmount" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.InvoiceServices" invoke="getInvoiceListTotalAmount">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="invoicesTotal" type="Map" mode="OUT" optional="false"/>
+    </service>
+    <service name="getTotalPaymentAmount" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.InvoiceServices" invoke="getTotalPaymentAmount">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="totalPaymentAmount" type="Map" mode="OUT" optional="false"/>
+    </service>
+    <service name="getTotalExpenseAmount" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.ExpenseServices" invoke="getTotalExpenseAmount">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="totalExpenseAmount" type="Map" mode="OUT" optional="false"/>
+    </service>
+    <service name="getTotalPaymentAmountByDate" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.InvoiceServices" invoke="getTotalPaymentAmountByDate">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="fromDate" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="thruDate" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="paymentTotal" type="Map" mode="OUT" optional="false"/>
+    </service>
+    <service name="getTotalExpenseAmountByDate" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.ExpenseServices" invoke="getTotalExpenseAmountByDate">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="fromDate" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="thruDate" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="expenseTotal" type="Map" mode="OUT" optional="false"/>
+    </service>
+    <service name="createPvtNote" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.NoteServices" invoke="createPvtNote">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="partyId" type="List" mode="IN" optional="true"/>
+        <attribute name="noteName" type="String" mode="IN" optional="false"/>
+        <attribute name="note" type="String" mode="IN" optional="true" allow-html="any"/>
+        <attribute name="noteId" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="fetchPvtNotes" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.NoteServices" invoke="fetchPvtNotes">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="noteInfoList" type="List" mode="OUT" optional="false"/>
+    </service>
+    <service name="getPrivateNote" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.NoteServices" invoke="getPrivateNote">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="noteId" type="String" mode="IN" optional="false"/>
+        <attribute name="privateNote" type="List" mode="OUT" optional="false"/>
+    </service>
+    <service name="updateNote" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.NoteServices" invoke="updatePrivateNote">
+    <attribute name="academyId" type="String" mode="IN" optional="false"/>
+    <attribute name="partyId" type="List" mode="IN" optional="true"/>
+    <attribute name="noteId" type="String" mode="IN" optional="false"/>
+    <attribute name="noteName" type="String" mode="IN" optional="false"/>
+    <attribute name="note" type="String" mode="IN" optional="true" allow-html="any"/>
+    <attribute name="responseMessage" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="removePrivateNote" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.NoteServices" invoke="removePrivateNote">
+    <attribute name="partyId" type="String" mode="IN" optional="false"/>
+    <attribute name="noteId" type="String" mode="IN" optional="false"/>
+    <attribute name="responseMessage" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="updateAcademy" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.AcademyServices" invoke="updateAcademy">
+        <attribute name="partyId" type="String" mode="IN" optional="false"/>
+        <attribute name="firstName" type="String" mode="IN" optional="false"/>
+        <attribute name="lastName" type="String" mode="IN" optional="false"/>
+        <attribute name="email" type="String" mode="IN" optional="false"/>
+        <attribute name="mobile" type="String" mode="IN" optional="true"/>
+        <attribute name="academyId" type="String" mode="IN" optional="true"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="createAcademyPartyAttrCurrencyInfo" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.AcademyServices" invoke="createAcademyPartyAttrCurrencyInfo">
+        <attribute name="partyId" type="String" mode="IN" optional="false"/>
+        <attribute name="attrName" type="String" mode="IN" optional="false"/>
+        <attribute name="attrVal" type="String" mode="IN" optional="false"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="updateAcademyPartyAttrCurrencyInfo" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.AcademyServices" invoke="updateAcademyPartyAttrCurrencyInfo">
+        <attribute name="partyId" type="String" mode="IN" optional="false"/>
+        <attribute name="attrName" type="String" mode="IN" optional="false"/>
+        <attribute name="attrVal" type="String" mode="IN" optional="false"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="readAcademyPartyAttrCurrencyInfo" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.AcademyServices" invoke="readAcademyPartyAttrCurrencyInfo">
+        <attribute name="partyId" type="String" mode="IN" optional="false"/>
+        <attribute name="attrName" type="String" mode="IN" optional="false"/>
+        <attribute name="partyAttrCurrencyInfo" type="Map" mode="OUT" optional="false"/>
+    </service>
+    <service name="verifyPassword" engine="java" default-entity-name="UserLogin"
+             location="com.cth.academy.services.PasswordMgmtServices" invoke="verifyPassword" auth="true">
+        <description>Validate the password</description>
+        <attribute name="userLoginId" type="String" mode="IN" optional="true"/>
+        <attribute name="currentPassword" type="String" mode="IN" optional="true"/>
+        <attribute name="newPassword" type="String" mode="IN" optional="true"/>
+        <attribute name="newPasswordVerify" type="String" mode="IN" optional="true"/>
+        <attribute name="passwordHint" type="String" mode="IN" optional="true"/>
+    </service>
+    <service name="canAddStudent" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.SubscriptionServices" invoke="canAddStudent">
+        <attribute name="partyId" type="String" mode="IN" optional="false"/>
+        <attribute name="planTypeId" type="String" mode="IN" optional="false"/>
+        <attribute name="hasPermission" type="Boolean" mode="OUT" optional="false"/>
+    </service>
+    <service name="canAddInvoice" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.SubscriptionServices" invoke="canAddInvoice">
+        <attribute name="partyId" type="String" mode="IN" optional="false"/>
+        <attribute name="planTypeId" type="String" mode="IN" optional="false"/>
+        <attribute name="hasPermission" type="Boolean" mode="OUT" optional="false"/>
+    </service>
+    <service name="createRecentActivity" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.RecentActivityServices" invoke="createRecentActivity">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="activityType" type="String" mode="IN" optional="false"/>
+        <attribute name="activityTypeId" type="String" mode="IN" optional="false"/>
+        <attribute name="activityTypeInfo" type="String" mode="IN" optional="true"/>
+        <attribute name="activityCreatedDate" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="action" type="String" mode="IN" optional="false"/>
+        <attribute name="activityId" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="getRecentActivities" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.RecentActivityServices" invoke="getRecentActivities">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="recentActivities" type="List" mode="OUT" optional="false"/>
+    </service>
+    <service name="updateRecentActivity" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.RecentActivityServices" invoke="updateRecentActivity">
+        <attribute name="academyId" type="String" mode="IN" optional="false"/>
+        <attribute name="activityId" type="String" mode="IN" optional="false"/>
+        <attribute name="activityType" type="String" mode="IN" optional="false"/>
+        <attribute name="activityTypeId" type="String" mode="IN" optional="false"/>
+        <attribute name="activityTypeInfo" type="String" mode="IN" optional="true"/>
+        <attribute name="activityCreatedDate" type="Timestamp" mode="IN" optional="false"/>
+        <attribute name="action" type="String" mode="IN" optional="false"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="deleteRecentActivity" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.RecentActivityServices" invoke="deleteRecentActivity">
+        <attribute name="activityId" type="String" mode="IN" optional="false"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="deleteFileDetails" engine="java" require-new-transaction="true" max-retry="3"
+             location="com.cth.academy.services.FilesServices" invoke="deleteFileDetails">
+        <attribute name="fileId" type="String" mode="IN" optional="false"/>
+        <attribute name="responseMessage" type="String" mode="OUT" optional="false"/>
+    </service>
+    <service name="studentEmailNotification" engine="groovy" location="component://academy/script/studentEmailNotification.groovy" invoke="">
+        <description>Sample Service to send email</description>
+        <attribute name="sendTo" type="String" mode="IN" optional="false"/>
+        <attribute name="partyId" type="String" mode="IN" optional="false"/>
+        <attribute name="studentName" type="String" mode="IN" optional="false"/>
+        <attribute name="result" type="String" mode="OUT"/>
+    </service>
+
+    <service name="UserEmailVerification" engine="groovy" location="component://academy/script/UserEmailVerification.groovy" invoke="">
+        <description>Sample Service to send email</description>
+        <attribute name="newUserMail" type="String" mode="IN" optional="false"/>
+        <attribute name="newUserName" type="String" mode="IN" optional="false"/>
+        <attribute name="newUserPartyId" type="String" mode="IN" optional="false"/>
+        <attribute name="result" type="String" mode="OUT"/>
+    </service>
+</services>

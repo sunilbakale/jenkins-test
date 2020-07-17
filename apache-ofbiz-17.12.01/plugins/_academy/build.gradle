@@ -1,0 +1,12 @@
+ext {
+    jerseyVersion = "2.28"
+}
+dependencies {
+    pluginLibsCompile "org.glassfish.jersey.containers:jersey-container-servlet:$jerseyVersion"
+    pluginLibsCompile "org.glassfish.jersey.inject:jersey-hk2:$jerseyVersion"
+    pluginLibsCompile "org.glassfish.jersey.core:jersey-server:$jerseyVersion"
+    pluginLibsCompile "org.glassfish.jersey.core:jersey-common:$jerseyVersion"
+    pluginLibsCompile "org.glassfish.jersey.media:jersey-media-json-jackson:$jerseyVersion"
+    pluginLibsCompile "org.mnode.ical4j:ical4j:3.0.9"
+    //pluginLibsCompile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.8.4'
+}
