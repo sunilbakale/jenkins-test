@@ -14,7 +14,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-           ./gradlew  build
+           sh ./gradlew  build
         }
       }
     }
