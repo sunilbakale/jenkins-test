@@ -28,7 +28,7 @@ pipeline {
     stage('Static Code Analysis') {
       agent any
       steps {
-		def PROJECT_ID=cth-web-project-282111
+		sh def PROJECT_ID=cth-web-project-282111
 		sh '''
 		docker build -t gcr.io/${PROJECT_ID}/cth-app:v15 .
 		'''
