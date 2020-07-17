@@ -20,7 +20,9 @@ pipeline {
       steps {
         deleteDir()
         checkout scm
+		cd apache-ofbiz-17.12.01		
 		sh './gradlew build'
+		sh 'gradle install'
       }
     }
 
