@@ -28,8 +28,8 @@ pipeline {
     stage('Static Code Analysis') {
       agent any
       steps {
-		sh 'Dockerfile'
-        sh 'Dockerfile.sh'
+		def PROJECT_ID=cth-web-project-282111
+		docker build -t gcr.io/${PROJECT_ID}/cth-app:v15 .
       }
     }
 
@@ -38,6 +38,7 @@ pipeline {
       agent any
       steps {
         sh "echo 'Run Unit Tests'"
+		docker push gcr.io/${PROJECT_ID}/cth-app:v15
       }
     }
 
