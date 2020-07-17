@@ -28,7 +28,8 @@ pipeline {
     stage('Static Code Analysis') {
       agent any
       steps {
-        sh "echo 'Dockerfile'"
+		sh 'Dockerfile'
+        sh 'Dockerfile.sh'
       }
     }
 
