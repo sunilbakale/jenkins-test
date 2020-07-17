@@ -1,8 +1,7 @@
 node {
-    // Clean workspace before doing anything
-    deleteDir()
-
     
+    deleteDir()
+	
         stage ('Clone') {
             checkout scm
         }
@@ -24,4 +23,4 @@ node {
         stage ('Deploy') {
             sh "echo 'shell scripts to deploy to server...'"
         }
-}
+	}
