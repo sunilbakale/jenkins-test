@@ -19,9 +19,7 @@ pipeline {
       agent any
       steps {
         deleteDir()
-        checkout scm
-		cd apache-ofbiz-17.12.01		
-		sh './gradlew build'
+        checkout scm	
 		sh 'gradle install'
       }
     }
