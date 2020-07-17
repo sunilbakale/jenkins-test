@@ -20,7 +20,7 @@ pipeline {
       steps {
         deleteDir()
         checkout scm	
-		sh './gradlew build'
+		sh 'gradle build'
       }
     }
 
