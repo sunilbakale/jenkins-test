@@ -28,9 +28,7 @@ pipeline {
     stage('Static Code Analysis') {
       agent any
       steps {
-        deleteDir()
-        checkout scm
-        sh "echo 'Run Static Code Analysis'"
+        sh "echo 'Dockerfile'"
       }
     }
 
@@ -38,8 +36,6 @@ pipeline {
     stage('Unit Tests') {
       agent any
       steps {
-        deleteDir()
-        checkout scm
         sh "echo 'Run Unit Tests'"
       }
     }
@@ -48,12 +44,9 @@ pipeline {
     stage('Acceptance Tests') {
       agent any
       steps {
-        deleteDir()
-        checkout scm
         sh "echo 'Run Acceptance Tests'"
       }
     }
-
   }
   post {
     success {
