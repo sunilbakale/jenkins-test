@@ -38,7 +38,9 @@ pipeline {
       agent any
       steps {
         sh "echo 'Run Unit Tests'"
+		 sh '''
 		docker push gcr.io/${PROJECT_ID}/cth-app:v15
+		'''
       }
     }
 
