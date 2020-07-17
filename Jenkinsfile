@@ -29,14 +29,17 @@ pipeline {
       agent any
       steps {
 		def PROJECT_ID=cth-web-project-282111
+		sh '''
 		docker build -t gcr.io/${PROJECT_ID}/cth-app:v15 .
-      }
+		'''
+	  }
     }
 
     // Unit Tests
     stage('Unit Tests') {
       agent any
       steps {
+		def PROJECT_ID=cth-web-project-282111
         sh "echo 'Run Unit Tests'"
 		 sh '''
 		docker push gcr.io/${PROJECT_ID}/cth-app:v15
