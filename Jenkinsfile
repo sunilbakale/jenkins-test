@@ -8,7 +8,8 @@ node {
         }
         stage ('Build') {
             sh "echo 'shell scripts to build project...'"
-        }
+			sh ./gradlew build 
+			}
         stage ('Tests') {
             parallel 'static': {
                 sh "echo 'shell scripts to run static tests...'"
