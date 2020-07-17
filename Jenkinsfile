@@ -2,7 +2,6 @@
 
 pipeline {
 
-  def PROJECT_ID=cth-web-project-282111
   agent any
 
   environment {
@@ -30,7 +29,7 @@ pipeline {
       agent any
       steps {
 		sh '''
-		docker build -t gcr.io/${PROJECT_ID}/cth-app:v15 .
+		docker build -t gcr.io/cth-web-project-282111/cth-app:v15 .
 		'''
 	  }
     }
@@ -41,7 +40,7 @@ pipeline {
       steps {
         sh "echo 'Run Unit Tests'"
 		 sh '''
-		docker push gcr.io/${PROJECT_ID}/cth-app:v15
+		docker push gcr.io/cth-web-project-282111/cth-app:v15
 		'''
       }
     }
